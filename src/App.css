@@ -53,7 +53,7 @@ input {
 }
 
 #cityInput {
-  width: 12%;
+  width: 11%;
   margin-right: 1em;
 }
 
@@ -67,7 +67,7 @@ input {
 
 #searchSubmitBtn {
   font-size: 0.83em;
-  width: 15%;
+  width: 115%;
   height: 1.4em;
   border-radius: 2em;
   padding: 0.3em 1em 1.5em 1em;
@@ -80,4 +80,8 @@ input {
   color: lightgreen;
   border-color: lightgreen;
   cursor: pointer;
+}
+
+span {
+  width: inherit;
 }

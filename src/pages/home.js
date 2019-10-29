@@ -7,7 +7,7 @@ const Home = () => {
 
     return (
         <span>
-            <h1 style={{ marginTop: "-3em" }}>jobliss.</h1>
+            <h1 style={{ marginTop: "-3em" }}>Jobliss.</h1>
             <div id="homepage-searchbar">
                 <input type="text" placeholder="Enter Job Position, Title, Role, etc"></input>
                 <input id="cityInput" type="text" placeholder="City/State"></input>

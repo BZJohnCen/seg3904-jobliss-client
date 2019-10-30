@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-// import logo from './logo.svg';
+import 'antd/dist/antd.css';
 import './App.css';
-import Home from './pages/home'
-import SearchResults from './pages/search-results'
+import Home from './pages/Home/home'
+import SearchResults from './pages/Results/search-results'
 import { Route, Switch } from 'react-router-dom'
 
 function App() {

@@ -1,14 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'antd/dist/antd.css';
 import './App.css';
+import Home from './pages/Home/home'
+import SearchResults from './pages/Results/search-results'
+import { Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>jobliss</h1>
-        <input id="search" type="text" placeholder="Enter Job Position, Title, Role, etc"></input>
-      </header>
+      <div className="App-header">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/search" component={SearchResults} />
+        </Switch>
+      </div>
     </div>
   );
 }

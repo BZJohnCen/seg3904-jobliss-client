@@ -1,8 +1,39 @@
 import { css } from '@emotion/core'
 
-export const CityInput = css`
-    width: 11%;
-    margin-right: 1em;
+export const HomeContainer = css`
+    background-color: #282c34;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const Title = css`
+    font-weight: 100;
+    color: white;
+`
+
+export const ContentContainer = css`
+    margin-top: -20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const QueryInput = css`
+    width: 39%;
+    height: 42px;
+    font-size: 18px;
+    font-weight: 200;
+    padding: 0.2em 1em 0.2em 1em;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 1.5%;
+    color: black;
 `
 
 export const SearchBar = css`
@@ -14,14 +45,15 @@ export const SearchBar = css`
 `
 
 export const SubmitSearch = css`
-    font-size: 0.83em;
-    width: 115%;
-    height: 1.4em;
-    border-radius: 2em;
-    padding: 0.3em 1em 1.5em 1em;
-    font-weight: 200;
+    font-size: 19px;
+    width: 125px;
+    height: 42px;
+    border-radius: 10px;
+    padding: 0px 30px 0px 30px;
+    font-weight: 400;
     color: white;
     background: none;
+    outline: none;
 
     &:hover {
         color: lightgreen;

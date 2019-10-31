@@ -6,11 +6,18 @@ export const SearchResultsContainer = css`
     width: 100%;
     height: 100%;
 `
-
 export const ResultsContent = css`
     display: flex;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+`
+export const HeaderContainer = css`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
     justify-content: center;
     align-items: center;
 `

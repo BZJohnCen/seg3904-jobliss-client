@@ -16,6 +16,7 @@ export const CardContainer = css`
     padding: 16px 2em;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    border-radius: 5px;
 
     &:hover{
         // border-top: 5px green solid;

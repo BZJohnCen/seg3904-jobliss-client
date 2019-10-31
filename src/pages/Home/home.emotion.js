@@ -9,12 +9,12 @@ export const HomeContainer = css`
     justify-content: center;
     align-items: center;
 `
-
 export const Title = css`
-    font-weight: 100;
+    font-weight: 200;
     color: white;
+    font-size: 54px;
+    margin-left: -4.5%;
 `
-
 export const ContentContainer = css`
     margin-top: -20%;
     width: 100%;
@@ -23,19 +23,17 @@ export const ContentContainer = css`
     justify-content: center;
     align-items: center;
 `
-
 export const QueryInput = css`
     width: 39%;
     height: 42px;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 350;
     padding: 0.2em 1em 0.2em 1em;
     border-radius: 5px;
     outline: none;
     margin-right: 1.5%;
     color: black;
 `
-
 export const SearchBar = css`
     display: flex;
     flex-direction: row;
@@ -43,7 +41,6 @@ export const SearchBar = css`
     align-items: center;
     justify-content: center;
 `
-
 export const SubmitSearch = css`
     font-size: 19px;
     width: 125px;
@@ -60,4 +57,11 @@ export const SubmitSearch = css`
         border-color: lightgreen;
         cursor: pointer;
     }
+`
+export const LabelSpan = css`
+    position: absolute;
+    color: lightblue;
+    font-weight: 200;
+    font-size: 18px;
+    top: 44.5%;
 `

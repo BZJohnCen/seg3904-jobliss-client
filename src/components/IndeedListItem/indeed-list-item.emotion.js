@@ -91,7 +91,7 @@ export const SummaryContainer = css`
     width: 100%;
     padding-left: 4%;
     padding-bottom: 2%;
-    padding-right: 0.4%;
+    padding-right: 0.5%;
 `
 export const JobInfoCol = css`
     @media (min-width: 992px) { 

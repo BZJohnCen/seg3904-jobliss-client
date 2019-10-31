@@ -3,11 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { Row, Col, List } from 'antd'
 import axios from 'axios'
 import * as styles from './search-results.emotion'
+import { useLocation } from 'react-router-dom'
 import IndeedListItem from '../../components/IndeedListItem/indeed-list-item'
 
-const getIndeedJobs = async () => {
+const useQuery = () => {
+    return new URLSearchParams(useLocation().search)
+}
+
+const getIndeedJobs = async (query, location) => {
     try {
-        let response = await axios.get(`https://9lgqy0jdu1.execute-api.us-east-1.amazonaws.com/dev/indeed?host=www.indeed.ca&query=software engineer`)
+        let response = await axios.get(`https://9lgqy0jdu1.execute-api.us-east-1.amazonaws.com/dev/indeed?host=www.indeed.ca&query=${query}&city=${location}`)
         return response.data
     } catch (err) {
         console.error("Could not fetch indeed results")
@@ -20,12 +25,15 @@ const SearchResults = (props) => {
     // const [jobBanksResults, setJobBanksResults] = useState([])
     // const [wowJobsResults, setWowJobsResults] = useState([])
     // const [allResults, setAllResults] = useState([])
+    let queryParams = useQuery()
+    let query = queryParams.get("query")
+    let location = queryParams.get("location")
 
     useEffect(() => {
-        const fetchIndeedJobs = async () => {
-            setIndeedResults(await getIndeedJobs())
+        const fetchIndeedJobs = async (query, location) => {
+            setIndeedResults(await getIndeedJobs(query, location))
         }
-        fetchIndeedJobs()
+        fetchIndeedJobs(query, location)
     }, [])
 
     return (

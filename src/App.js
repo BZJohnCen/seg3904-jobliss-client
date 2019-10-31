@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css';
 import Home from './pages/Home/home'
@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/search" component={SearchResults} />
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/search" component={SearchResults} />
+        </Switch>
       </div>
     </div>
   );

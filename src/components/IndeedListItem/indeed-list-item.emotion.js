@@ -15,11 +15,13 @@ export const CardContainer = css`
     // border: 0.5px solid lightgray;
     padding: 16px 2em;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover{
         // border-top: 5px green solid;
         // border-bottom: 5px green solid;
-        border: 2px green solid;
+        border: 2px blue solid;
+        transform: scale(1.03);
     }
 
     @media (min-width: 992px) {
@@ -29,7 +31,6 @@ export const CardContainer = css`
         height: fit-content;
     }
 `
-
 export const CardBodyStyle = {
     width: "100%",
     padding: "0"
@@ -45,7 +46,6 @@ export const SourceLogoContainer = css`
     align-items: center;
     cursor: pointer;
 `
-
 export const SourceLogoCol = css`
     @media (min-width: 992px) { 
         height: 51%; 
@@ -54,7 +54,6 @@ export const SourceLogoCol = css`
         height: 100%;
     }
 `
-
 export const ContentContainer = css`
     display: flex;
     flex-direction: row;
@@ -80,7 +79,6 @@ export const JobInfoContainer = css`
         text-align: left;
     }
 `
-
 export const MetaDataContainer = css`
     display: flex;
     flex-direction: row;
@@ -88,12 +86,13 @@ export const MetaDataContainer = css`
     justify-content: left;
     align-items: center;
 `
-
 export const SummaryContainer = css`
     display: flex;
     width: 100%;
+    padding-left: 4%;
+    padding-bottom: 2%;
+    padding-right: 0.4%;
 `
-
 export const JobInfoCol = css`
     @media (min-width: 992px) { 
         height: fit-content; 
@@ -102,9 +101,8 @@ export const JobInfoCol = css`
         height: 100%; 
     }
 `
-
 export const CardText = css`
-    font-weight: 100;
+    font-weight: 200;
     margin: 0em 0em;
     padding-left: 4%;
     font-size: 18px;
@@ -113,9 +111,8 @@ export const CardText = css`
     height: 100%;
     // margin-left: 0;
 `
-
 export const LocationText = css`
-    font-weight: 100;
+    font-weight: 300;
     margin: 0em 0em;
     padding-left: 4%;
     font-size: 16px;
@@ -124,7 +121,6 @@ export const LocationText = css`
     height: 100%;
     margin-bottom: 2%;
     margin-top: 1.9px;
-    font-weight: 200;
     color: gray;
 
     @media (min-width: 992px){
@@ -137,9 +133,9 @@ export const LocationText = css`
 `
 
 export const DateReviewText = css`
-    font-weight: 100;
+    font-weight: 300;
     margin: 0em 0em;
-    font-size: 12px;
+    font-size: 16px;
     width: fit-content;
     color: black;
     height: 100%;
@@ -152,6 +148,28 @@ export const DateReviewText = css`
         width: 100%;
         justify-content: left; 
         align-items: left;
+    }
+`
+export const ApplySection = css`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+`
+export const ApplyButton = css`
+    border: 1px green solid;
+    padding: 10px 25px 10px 25px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+
+    &:hover {
+        color: white;
+        border-color: #0fa334;
+        background-color: #0fa334;
     }
 `
 

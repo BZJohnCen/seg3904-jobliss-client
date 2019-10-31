@@ -1,20 +1,23 @@
+/** @jsx jsx */ import { jsx, css } from '@emotion/core'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as styles from './home.emotion'
 
 const Home = () => {
     let [userQuery, setUserQuery] = useState("")
-    let [userCity, setUserCity] = useState("")
+    let [userLocation, setUserLocation] = useState("")
 
     return (
-        <span>
-            <h1 style={{ marginTop: "-3em" }}>Jobliss.</h1>
-            <div css={styles.SearchBar}>
-                <input type="text" placeholder="Enter Job Position, Title, Role, etc"></input>
-                <input css={styles.CityInput} type="text" placeholder="City/State"></input>
-                <Link to="/search"><button css={styles.SubmitSearch} type="submit">Search</button></Link>
+        <div css={styles.HomeContainer}>
+            <div style={{ marginTop: "-20%", width: "100%" }}>
+                <h1 css={styles.Title}>Jobliss.</h1>
+                <div css={styles.SearchBar}>
+                    <input css={styles.QueryInput} onChange={e => setUserQuery(e.target.value)} type="text" placeholder="Type: 'Software Developer' or 'Business Analyst'"></input>
+                    <input css={styles.QueryInput} onChange={e => setUserLocation(e.target.value)} style={{ width: "15%", marginRight: "2em" }} type="text" placeholder="Ex. 'Toronto, ON'"></input>
+                    <Link to={`/search?query=${userQuery}&location=${userLocation}`}><button css={styles.SubmitSearch} type="submit">Search</button></Link>
+                </div>
             </div>
-        </span>
+        </div>
     )
 }
 

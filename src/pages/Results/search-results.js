@@ -1,10 +1,12 @@
 /** @jsx jsx */ import { jsx, css } from '@emotion/core'
 import React, { useState, useEffect } from 'react'
-import { Row, Col, List } from 'antd'
+import { Row, Col, List, Icon } from 'antd'
 import axios from 'axios'
 import * as styles from './search-results.emotion'
 import { useLocation, Link } from 'react-router-dom'
 import IndeedListItem from '../../components/IndeedListItem/indeed-list-item'
+import MonsterListItem from '../../components/MonsterListItem/monster-list-item'
+import JobBanksListItem from '../../components/JobbanksListItem/jobbanks-list-item'
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search)
@@ -21,6 +23,7 @@ const getIndeedJobs = async (query, location) => {
 
 const SearchResults = (props) => {
     const [indeedResults, setIndeedResults] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     // const [monsterResults, setMonsterResults] = useState([])
     // const [jobBanksResults, setJobBanksResults] = useState([])
     // const [wowJobsResults, setWowJobsResults] = useState([])
@@ -30,10 +33,12 @@ const SearchResults = (props) => {
     let location = queryParams.get("location")
 
     useEffect(() => {
+        setIsLoading(true)
         const fetchIndeedJobs = async (query, location) => {
             setIndeedResults(await getIndeedJobs(query, location))
         }
         fetchIndeedJobs(query, location)
+        setIsLoading(false)
     }, [])
 
     return (
@@ -51,7 +56,7 @@ const SearchResults = (props) => {
                             <List
                                 split={false}
                                 size="large"
-                                dataSource={indeedResults.map((item) => <IndeedListItem {...item} />)} //render IndeedListItem for now
+                                dataSource={indeedResults.map((item) => <MonsterListItem {...item} />)} //render IndeedListItem for now
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>

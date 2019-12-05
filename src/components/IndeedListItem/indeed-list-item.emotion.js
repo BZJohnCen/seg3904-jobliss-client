@@ -10,9 +10,9 @@ export const CardContainer = css`
     //height: 125px;
     // background-color: gray; //remove after
     // border-radius: 1em;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    // border: 0.5px solid lightgray;
+    // border-top: 1px solid lightgray;
+    // border-bottom: 1px solid lightgray;
+    border: 0.5px solid lightgray;
     padding: 16px 2em;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -141,7 +141,7 @@ export const DateReviewText = css`
     color: black;
     height: 100%;
     display: flex;
-    padding-left: 11%;
+    padding-left: 4%;
     justify-content: center; 
     align-items: center;
 

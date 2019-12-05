@@ -22,6 +22,12 @@ const SearchResults = (props) => {
     const [wowJobsResults, setWowJobsResults] = useState([])
     const [allResults, setAllResults] = useState([])
     const [isModalHidden, setIsModalHidden] = useState(true)
+    const [showSource, setShowSource] = useState({
+        showIndeed: true,
+        showMonster: true,
+        showWowJobs: true,
+        showJobBank: true
+    })
 
     let queryParams = useQuery()
     let query = queryParams.get("query")
@@ -64,20 +70,6 @@ const SearchResults = (props) => {
         }
     }
 
-    const renderIndeedListCards = (indeedList) => {
-        return indeedList.map((job, i) => {
-            return (<IndeedListItem key={i} {...job} />)
-        })
-    }
-    // const renderMonsterListCard = (indeedList) => {
-    //     return indeedList.map((job, i) => {
-    //         return (<IndeedListItem key={i} {...job} />)
-    //     })
-    // }
-    // const mergeResults = (i, m, jb, wj) => {
-    //     return i.concat(m, jb, wj)
-    // }
-
     useEffect(() => {
         const fetchIndeedJobs = async (query, location) => {
             setIsLoading(true)
@@ -97,14 +89,9 @@ const SearchResults = (props) => {
         fetchMonsterJobs(query, location)
         fetchJBJobs(`${query} in ${location}`)
         fetchWJJobs(query, location)
-        // console.log('render indeed list cards:', renderIndeedListCards(indeedResults))
-        // setTimeout(() => {
-        //     setAllResults(mergeResults(indeedResults, monsterResults, jobBanksResults, wowJobsResults))
-        //     console.log('allResults:\n', allResults)
-        // }, 5000)
 
         setIsLoading(false)
-    }, [])
+    }, [showSource])
 
     const showModal = () => {
         setIsModalHidden(false)
@@ -115,7 +102,102 @@ const SearchResults = (props) => {
 
     const stateCallback = {
         modalActiveFn: () => setIsModalHidden(true),
-        changePayload: () => {}
+        updateSourceFilter: (i, m, w, j) => setShowSource({
+            showIndeed: i,
+            showMonster: m,
+            showWowJobs: w,
+            showJobBank: j
+        })
+    }
+
+    const ListResults = () => {
+        if (showSource.showIndeed && !showSource.showMonster && !showSource.showWowJobs && !showSource.showJobBank) {
+            return (
+                <List
+                    split={false}
+                    size="large"
+                    pagination={{
+                        showSizeChanger: true,
+                        onChange: (page, pageSize) => { window.scrollTo({ top: 0 }) },
+                        onShowSizeChange: (current, size) => { window.scrollTo({ top: 0 }) },
+                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+                    }}
+                    dataSource={indeedResults.map((item, i) => <IndeedListItem key={i} {...item} />)} //render IndeedListItem for now
+                    renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                /> 
+                        
+            )
+        } else if (!showSource.showIndeed && showSource.showMonster && !showSource.showWowJobs && !showSource.showJobBank) {
+            return (
+                <List
+                    split={false}
+                    size="large"
+                    pagination={{
+                        showSizeChanger: true,
+                        onChange: (page, pageSize) => { window.scrollTo({ top: 0 }) },
+                        onShowSizeChange: (current, size) => { window.scrollTo({ top: 0 }) },
+                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+                    }}
+                    dataSource={monsterResults.map((item, i) => <MonsterListItem key={i} {...item} />)} //render MonsterListItem for now
+                    renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                /> 
+            )
+        } else if (!showSource.showIndeed && !showSource.showMonster && showSource.showWowJobs && !showSource.showJobBank) {            
+            return (
+                <List
+                    split={false}
+                    size="large"
+                    pagination={{
+                        showSizeChanger: true,
+                        onChange: (page, pageSize) => { window.scrollTo({ top: 0 }) },
+                        onShowSizeChange: (current, size) => { window.scrollTo({ top: 0 }) },
+                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+                    }}
+                    dataSource={wowJobsResults.map((item, i) => <WowJobsListItem key={i} {...item} />)} //render IndeedListItem for now
+                    renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                /> 
+            )
+        } else if (!showSource.showIndeed && !showSource.showMonster && !showSource.showWowJobs && showSource.showJobBank) {
+            return (
+                <List
+                    split={false}
+                    size="large"
+                    pagination={{
+                        showSizeChanger: true,
+                        onChange: (page, pageSize) => { window.scrollTo({ top: 0 }) },
+                        onShowSizeChange: (current, size) => { window.scrollTo({ top: 0 }) },
+                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+                    }}
+                    dataSource={jobBanksResults.map((item, i) => <JobBanksListItem key={i} {...item} />)} //render IndeedListItem for now
+                    renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                /> 
+            )
+        } else if (showSource.showIndeed && showSource.showMonster && showSource.showWowJobs && showSource.showJobBank) {
+            return (
+                <List
+                    split={false}
+                    size="large"
+                    pagination={{
+                        showSizeChanger: true,
+                        onChange: (page, pageSize) => { window.scrollTo({ top: 0 }) },
+                        onShowSizeChange: (current, size) => { window.scrollTo({ top: 0 }) },
+                        showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+                    }}
+                    dataSource={[...indeedResults, ...monsterResults, ...wowJobsResults, ...jobBanksResults].sort(() => Math.random() - 0.5).map((job, i) => {
+                        if (job.url.includes("indeed")){
+                            return <IndeedListItem key={i} {...job} />
+                        } else if (job.url.includes("monster")) {
+                            return <MonsterListItem key={i} {...job} />
+                        } else if (job.url.includes("jobbank")) {
+                            return <JobBanksListItem key={i} {...job} />
+                        } else {
+                            return <WowJobsListItem key={i} {...job} />
+                        }
+                    })}
+                    renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                /> 
+            )
+        }
     }
 
     return (
@@ -133,65 +215,13 @@ const SearchResults = (props) => {
                         isHidden={isModalHidden}
                         hideModal={hideModal}
                         stateCallback={stateCallback}
+                        showSource={showSource}
                     />
                     <div css={styles.ResultsContent}>
-                        {indeedResults && monsterResults && wowJobsResults && jobBanksResults ?
-                            <List
-                                split={false}
-                                size="large"
-                                pagination={true}
-                                dataSource={[...indeedResults, ...monsterResults, ...wowJobsResults, ...jobBanksResults].map((job, i) => {
-                                    if (job.url.includes("indeed")){
-                                        return <IndeedListItem key={i} {...job} />
-                                    } else if (job.url.includes("monster")) {
-                                        return <MonsterListItem key={i} {...job} />
-                                    } else if (job.url.includes("jobbank")) {
-                                        return <JobBanksListItem key={i} {...job} />
-                                    } else {
-                                        return <WowJobsListItem key={i} {...job} />
-                                    }
-                                })}
-                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-                            /> :
-                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
+                        {                        
+                            ListResults()   
+                            // <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
                         }
-                        {/* {indeedResults ?
-                            <List
-                                split={false}
-                                size="large"
-                                pagination={true}
-                                dataSource={indeedResults.map((item, i) => <IndeedListItem key={i} {...item} />)} //render IndeedListItem for now
-                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-                            /> :
-                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        } */}
-                        {/* {monsterResults ?
-                            <List
-                                split={false}
-                                size="large"
-                                dataSource={monsterResults.map((item, i) => <MonsterListItem key={i} {...item} />)} //render MonsterListItem for now
-                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-                            /> :
-                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        }
-                        {wowJobsResults ?
-                            <List
-                                split={false}
-                                size="large"
-                                dataSource={wowJobsResults.map((item, i) => <WowJobsListItem key={i} {...item} />)} //render IndeedListItem for now
-                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-                            /> :
-                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        }
-                        {jobBanksResults ?
-                            <List
-                                split={false}
-                                size="large"
-                                dataSource={jobBanksResults.map((item, i) => <JobBanksListItem key={i} {...item} />)} //render IndeedListItem for now
-                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-                            /> :
-                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        } */}
                     </div>
                 </Col>
             </Row>   

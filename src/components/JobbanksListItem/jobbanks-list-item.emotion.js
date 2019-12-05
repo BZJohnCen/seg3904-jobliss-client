@@ -141,7 +141,7 @@ export const DateReviewText = css`
     color: black;
     height: 100%;
     display: flex;
-    padding-left: 11%;
+    padding-left: 4%;
     justify-content: center; 
     align-items: center;
 

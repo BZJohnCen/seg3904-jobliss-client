@@ -23,8 +23,8 @@ const JobBanksListItem = (props) => {
                             <h4 css={styles.LocationText}>{props.location}</h4>
                         </div>
                         <div css={styles.MetaDataContainer}>
-                            <h4 css={styles.CardText} style={{ width: "100%" }}>Salary: {(props.salary) ? props.salary: "N/A"}</h4>
                             <h4 css={styles.DateReviewText}>Posted: {(props.date_posted) ? props.date_posted : "N/A"}</h4>
+                            <h4 css={styles.CardText} style={{ width: "100%", paddingLeft: "0%" }}>Salary: {(props.salary) ? props.salary: "N/A"}</h4>
                         </div>
                     </div>
                 </Col>

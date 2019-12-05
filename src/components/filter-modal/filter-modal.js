@@ -6,17 +6,30 @@ import * as styles from './filter-modal.emotion'
 const FilterModal = (props) => {
     let hidden = props.isHidden
     const [isLoading, setIsLoading] = useState(false)
+    const [sourceFilter, setSourceFilter] = useState({
+        indeed: props.showSource.showIndeed,
+        monster: props.showSource.showMonster,
+        wowjobs: props.showSource.showWowJobs,
+        jobbank: props.showSource.showJobBank
+    })
 
-    const onChange = (e) => {
+    const onChange = (e, key) => {
         console.log('checked: ', e.target.checked)
+        let newSourceFilter = { ...sourceFilter }
+        newSourceFilter[key] = e.target.checked
+        setSourceFilter(newSourceFilter)
     }
 
     const handleOnOK = () => {
-
+        setIsLoading(true)
+        props.stateCallback.modalActiveFn()
+        props.stateCallback.updateSourceFilter(sourceFilter.indeed, sourceFilter.monster, sourceFilter.wowjobs, sourceFilter.jobbank)
+        setIsLoading(false)
     }
 
     return (
-        <Modal visible={!hidden}
+        <Modal 
+            visible={!hidden}
             title="Search Filters"
             onOk={handleOnOK}
             onCancel={props.hideModal}
@@ -29,10 +42,10 @@ const FilterModal = (props) => {
                 </Button>,
             ]}
         >
-            <Checkbox onChange={onChange}>Indeed</Checkbox>
-            <Checkbox onChange={onChange}>Monster</Checkbox>
-            <Checkbox onChange={onChange}>Wow Jobs</Checkbox>
-            <Checkbox onChange={onChange}>Job Banks</Checkbox>
+            <Checkbox defaultChecked={true} checked={sourceFilter.indeed} onChange={(e) => onChange(e, 'indeed')}>Indeed</Checkbox>
+            <Checkbox defaultChecked={true} checked={sourceFilter.monster} onChange={(e) => onChange(e, 'monster')}>Monster</Checkbox>
+            <Checkbox defaultChecked={true} checked={sourceFilter.wowjobs} onChange={(e) => onChange(e, 'wowjobs')}>Wow Jobs</Checkbox>
+            <Checkbox defaultChecked={true} checked={sourceFilter.jobbank} onChange={(e) => onChange(e, 'jobbank')}>Job Banks</Checkbox>
         </Modal>
     )
 }

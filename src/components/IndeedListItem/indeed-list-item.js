@@ -15,7 +15,7 @@ const IndeedListItem = (props) => {
                 </Col >
                 <Col lg={{ span: 20 }} xl={{ span: 17 }} css={styles.JobInfoCol}>
                     <div css={styles.JobInfoContainer}>
-                        <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>
+                        <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600", width: "800px" }}>
                             <a href={props.url} rel="noopener noreferrer" target="_blank" css={styles.TitleLink}>{props.title}</a>
                         </h4>                         
                         <div style={{ display: "flex", flexDirection: "row" }}>
@@ -24,8 +24,8 @@ const IndeedListItem = (props) => {
                         </div>
                         <div css={styles.SummaryContainer}>{props.summary}</div>
                         <div css={styles.MetaDataContainer}>
-                            <h4 css={styles.CardText} style={{ width: "100%" }}>Salary: {(props.salary) ? props.salary: "N/A"}</h4>
                             <h4 css={styles.DateReviewText}>Posted: {(props.postDate) ? props.postDate : "N/A"}</h4>
+                            <h4 css={styles.CardText} style={{ width: "100%", paddingLeft: "0%" }}>Salary: {(props.salary) ? props.salary: "N/A"}</h4>
                         </div>
                     </div>
                 </Col>

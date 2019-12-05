@@ -10,9 +10,9 @@ export const CardContainer = css`
     //height: 125px;
     // background-color: gray; //remove after
     // border-radius: 1em;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    // border: 0.5px solid lightgray;
+    // border-top: 1px solid lightgray;
+    // border-bottom: 1px solid lightgray;
+    border: 0.5px solid lightgray;
     padding: 16px 2em;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -21,8 +21,8 @@ export const CardContainer = css`
     &:hover{
         // border-top: 5px green solid;
         // border-bottom: 5px green solid;
-        border: 2px blue solid;
-        transform: scale(1.03);
+        border: 2px green solid;
+        transform: scale(1.02);
     }
 
     @media (min-width: 992px) {
@@ -141,7 +141,7 @@ export const DateReviewText = css`
     color: black;
     height: 100%;
     display: flex;
-    padding-left: 11%;
+    padding-left: 4%;
     justify-content: center; 
     align-items: center;
 
@@ -173,7 +173,14 @@ export const ApplyButton = css`
         background-color: #0fa334;
     }
 `
+export const TitleLink = css`
+    color: black;
+    transition: hover 0.5s ease-in;
 
+    &:hover {
+        border-bottom: 1px #1890ff solid;
+    }
+`
 //     ${bp['medium']} {
 //         width: 720px;
 //     }

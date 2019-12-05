@@ -14,6 +14,7 @@ export const Title = css`
     color: white;
     font-size: 54px;
     margin-left: -4.5%;
+    margin-bottom: 2%;
 `
 export const ContentContainer = css`
     margin-top: -20%;
@@ -40,6 +41,7 @@ export const SearchBar = css`
     width: 100%;
     align-items: center;
     justify-content: center;
+    margin-top: 4%;
 `
 export const SubmitSearch = css`
     font-size: 19px;
@@ -63,5 +65,5 @@ export const LabelSpan = css`
     color: lightblue;
     font-weight: 200;
     font-size: 18px;
-    top: 44.5%;
+    top: 45.5%;
 `

@@ -21,7 +21,7 @@ export const CardContainer = css`
     &:hover{
         // border-top: 5px green solid;
         // border-bottom: 5px green solid;
-        border: 2px blue solid;
+        border: 2px green solid;
         transform: scale(1.03);
     }
 
@@ -109,7 +109,7 @@ export const LocationText = css`
     font-weight: 300;
     margin: 0em 0em;
     padding-left: 4%;
-    font-size: 16px;
+    font-size: 19px;
     width: fit-content;
     color: black;
     height: 100%;
@@ -164,6 +164,14 @@ export const ApplyButton = css`
         color: white;
         border-color: #0fa334;
         background-color: #0fa334;
+    }
+`
+export const TitleLink = css`
+    color: black;
+    transition: hover 0.5s ease-in;
+
+    &:hover {
+        border-bottom: 1px #1890ff solid;
     }
 `
 

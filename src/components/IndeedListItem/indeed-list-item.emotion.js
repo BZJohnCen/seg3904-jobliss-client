@@ -21,8 +21,8 @@ export const CardContainer = css`
     &:hover{
         // border-top: 5px green solid;
         // border-bottom: 5px green solid;
-        border: 2px blue solid;
-        transform: scale(1.03);
+        border: 2px green solid;
+        transform: scale(1.02);
     }
 
     @media (min-width: 992px) {
@@ -173,7 +173,14 @@ export const ApplyButton = css`
         background-color: #0fa334;
     }
 `
+export const TitleLink = css`
+    color: black;
+    transition: hover 0.5s ease-in;
 
+    &:hover {
+        border-bottom: 1px #1890ff solid;
+    }
+`
 //     ${bp['medium']} {
 //         width: 720px;
 //     }

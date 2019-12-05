@@ -7,38 +7,53 @@ import { useLocation, Link } from 'react-router-dom'
 import IndeedListItem from '../../components/IndeedListItem/indeed-list-item'
 import MonsterListItem from '../../components/MonsterListItem/monster-list-item'
 import JobBanksListItem from '../../components/JobbanksListItem/jobbanks-list-item'
+import WowJobsListItem from '../../components/WowjobsListItem/wowjobs-list-item'
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search)
 }
 
-const getIndeedJobs = async (query, location) => {
-    try {
-        let response = await axios.get(`https://9lgqy0jdu1.execute-api.us-east-1.amazonaws.com/dev/indeed?host=www.indeed.ca&query=${query}&city=${location}`)
-        return response.data
-    } catch (err) {
-        console.error("Could not fetch indeed results")
-    }
-}
-
 const SearchResults = (props) => {
     const [indeedResults, setIndeedResults] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    // const [monsterResults, setMonsterResults] = useState([])
+    const [monsterResults, setMonsterResults] = useState([])
     // const [jobBanksResults, setJobBanksResults] = useState([])
     // const [wowJobsResults, setWowJobsResults] = useState([])
-    // const [allResults, setAllResults] = useState([])
+    const [allResults, setAllResults] = useState([])
     let queryParams = useQuery()
     let query = queryParams.get("query")
     let location = queryParams.get("location")
 
+    const getIndeedJobs = async (q, locationParam) => {
+        try {
+            let response = await axios.get(`https://9lgqy0jdu1.execute-api.us-east-1.amazonaws.com/dev/indeed?host=www.indeed.ca&query=${q}&city=${locationParam}`)
+            return response.data
+        } catch (err) {
+            console.error("Could not fetch indeed results")
+        }
+    }
+
+    const getMonsterJobs = async (q, locationParam) => {
+        try {
+            let response = await axios.get(`https://9lgqy0jdu1.execute-api.us-east-1.amazonaws.com/dev/monster?query=${q}&location=${locationParam}`)
+            return response.data
+        } catch (err) {
+            console.error("Could not fetch monster results")
+        }
+    }
+
     useEffect(() => {
-        setIsLoading(true)
+        // setIsLoading(true)
         const fetchIndeedJobs = async (query, location) => {
             setIndeedResults(await getIndeedJobs(query, location))
         }
+        const fetchMonsterJobs = async (query, location) => {
+            setMonsterResults(await getMonsterJobs(query, location))
+        }
         fetchIndeedJobs(query, location)
-        setIsLoading(false)
+        fetchMonsterJobs(query, location)
+        // setAllResults(indeedResults.concat(monsterResults))
+        // setIsLoading(false)
     }, [])
 
     return (
@@ -56,11 +71,20 @@ const SearchResults = (props) => {
                             <List
                                 split={false}
                                 size="large"
-                                dataSource={indeedResults.map((item) => <MonsterListItem {...item} />)} //render IndeedListItem for now
+                                dataSource={indeedResults.map((item, i) => <WowJobsListItem key={i} {...item} />)} //render IndeedListItem for now
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
                         }
+                        {/* {monsterResults ?
+                            <List
+                                split={false}
+                                size="large"
+                                dataSource={monsterResults.map((item, i) => <MonsterListItem key={i} {...item} />)} //render MonsterListItem for now
+                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                            /> :
+                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
+                        } */}
                     </div>
                 </Col>
             </Row>   

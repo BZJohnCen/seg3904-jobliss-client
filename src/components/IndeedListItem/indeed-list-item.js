@@ -10,12 +10,14 @@ const IndeedListItem = (props) => {
             <Row style={{ height: '100%' }}>
                 <Col lg={{ span: 4 }} xl={{ span: 3 }} css={styles.SourceLogoCol}>
                     <div css={styles.SourceLogoContainer}>
-                        <img src={IndeedLogo} style={{ objectFit: 'contain', width: '55%' }} alt="no_logo" />
+                        <img src={IndeedLogo} style={{ objectFit: 'contain', width: '50%' }} alt="no_logo" />
                     </div>
                 </Col >
                 <Col lg={{ span: 20 }} xl={{ span: 17 }} css={styles.JobInfoCol}>
                     <div css={styles.JobInfoContainer}>
-                        <h4 css={styles.CardText} style={{ fontSize: "20px", fontWeight: "600" }}>{props.title}</h4>
+                        <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>
+                            <a href={props.url} target="_blank" css={styles.TitleLink}>{props.title}</a>
+                        </h4>                         
                         <div style={{ display: "flex", flexDirection: "row" }}>
                             <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue" }}>{props.company}</h4>
                             <h4 css={styles.LocationText}>{props.location}</h4>

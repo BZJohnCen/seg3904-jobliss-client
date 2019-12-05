@@ -15,9 +15,11 @@ const MonsterListItem = (props) => {
                 </Col >
                 <Col lg={{ span: 20 }} xl={{ span: 17 }} css={styles.JobInfoCol}>
                     <div css={styles.JobInfoContainer}>
-                        <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>{props.title}</h4>
-                        <div style={{ display: "flex", flexDirection: "row" }}>
-                            <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue" }}>{props.company}</h4>
+                        <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>
+                            <a href={props.url} target="_blank" css={styles.TitleLink}>{props.title}</a>
+                        </h4>
+                        <div style={{ display: "flex", flexDirection: "row", marginTop: "-10%", marginBottom: "0%" }}>
+                            <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue", fontSize: "21px" }}>{props.company}</h4>
                             <h4 css={styles.LocationText}>{props.location}</h4>
                         </div>
                         <div css={styles.MetaDataContainer}>

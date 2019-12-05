@@ -14,6 +14,7 @@ export const Title = css`
     color: white;
     font-size: 54px;
     margin-left: -4.5%;
+    margin-bottom: 2%;
 `
 export const ContentContainer = css`
     margin-top: -20%;
@@ -63,5 +64,5 @@ export const LabelSpan = css`
     color: lightblue;
     font-weight: 200;
     font-size: 18px;
-    top: 44.5%;
+    top: 44.8%;
 `

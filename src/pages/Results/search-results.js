@@ -173,7 +173,7 @@ const SearchResults = (props) => {
                     }
                 })}
                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
-            /> : <h2 style={{ color: "white" }}>Loading...</h2>
+            /> : <h2 style={{ color: "white" }}>{(result.length === 0) ? "No Postings Found" : "Loading..."}</h2>
     }
 
     return (

@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import * as styles from './home.emotion'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import BinocularsIcon from './binoculars.png'
 
 const Home = () => {
     let [userQuery, setUserQuery] = useState("")
@@ -41,6 +42,7 @@ const Home = () => {
     return (
         <div css={styles.HomeContainer}>
             <div style={{ marginTop: "-20%", width: "100%" }}>
+                <div style={{ display: "flex", width: "fit-content", position: "absolute", left: "45%", top: "15%" }}><img src={BinocularsIcon} style={{ width: "100px", height: "100px" }} /></div>
                 <h1 css={styles.Title}>Jobliss. <span style={{ fontSize: "28px", color: "lightgreen" }}>find yours today</span></h1>
                 <div css={styles.SearchBar}>
                     <input css={styles.QueryInput}                 

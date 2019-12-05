@@ -46,7 +46,7 @@ const Home = () => {
                     <input css={styles.QueryInput}                 
                         onChange={e => setUserQuery(e.target.value)} 
                         type="text" 
-                        placeholder="Type: 'Software Developer' or 'Business Analyst'"
+                        placeholder="'Software Developer'"
                         onKeyPress={handleEnterKey}
                         required />
                     <span css={styles.LabelSpan} style={{ left: "21.8%" }}>Keyword</span>
@@ -54,7 +54,7 @@ const Home = () => {
                         onChange={e => setUserLocation(e.target.value)} 
                         style={{ width: "15%", marginRight: "2em" }} 
                         type="text" 
-                        placeholder="Ex. 'Toronto, ON'"
+                        placeholder="'Toronto, ON'"
                         onKeyPress={handleEnterKey} 
                         required />
                     <span css={styles.LabelSpan} style={{ left: "55.1%" }}>Location</span>

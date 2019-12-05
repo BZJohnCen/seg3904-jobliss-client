@@ -43,8 +43,8 @@ const SearchResults = (props) => {
     }
 
     useEffect(() => {
-        // setIsLoading(true)
         const fetchIndeedJobs = async (query, location) => {
+            setIsLoading(true)
             setIndeedResults(await getIndeedJobs(query, location))
         }
         const fetchMonsterJobs = async (query, location) => {
@@ -53,7 +53,7 @@ const SearchResults = (props) => {
         fetchIndeedJobs(query, location)
         fetchMonsterJobs(query, location)
         // setAllResults(indeedResults.concat(monsterResults))
-        // setIsLoading(false)
+        setIsLoading(false)
     }, [])
 
     return (
@@ -67,11 +67,21 @@ const SearchResults = (props) => {
                         <h2 style={{ fontWeight: "100", marginTop: '7%', color: "white" }}>Search Results</h2>
                     </div>
                     <div css={styles.ResultsContent}>
+                        {/* {allResults ?
+                            <List
+                                split={false}
+                                size="large"
+                                dataSource={indeedResults.map((item, i) => <IndeedListItem key={i} {...item} />)} //render IndeedListItem for now
+                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                            /> :
+                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
+                        } */}
                         {indeedResults ?
                             <List
                                 split={false}
                                 size="large"
-                                dataSource={indeedResults.map((item, i) => <WowJobsListItem key={i} {...item} />)} //render IndeedListItem for now
+                                pagination={true}
+                                dataSource={indeedResults.map((item, i) => <IndeedListItem key={i} {...item} />)} //render IndeedListItem for now
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
@@ -81,6 +91,24 @@ const SearchResults = (props) => {
                                 split={false}
                                 size="large"
                                 dataSource={monsterResults.map((item, i) => <MonsterListItem key={i} {...item} />)} //render MonsterListItem for now
+                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                            /> :
+                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
+                        } */}
+                        {/* {wowJobsResults ?
+                            <List
+                                split={false}
+                                size="large"
+                                dataSource={wowJobsResults.map((item, i) => <WowJobsListItem key={i} {...item} />)} //render IndeedListItem for now
+                                renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
+                            /> :
+                            <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
+                        } */}
+                        {/* {jobBanksResults ?
+                            <List
+                                split={false}
+                                size="large"
+                                dataSource={jobBanksResults.map((item, i) => <JobBanksListItem key={i} {...item} />)} //render IndeedListItem for now
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>

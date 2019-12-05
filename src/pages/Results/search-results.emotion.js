@@ -13,6 +13,7 @@ export const ResultsContent = css`
     height: 100%;
     justify-content: center;
     align-items: center;
+    margin-bottom: 4%;
 `
 export const HeaderContainer = css`
     display: flex;

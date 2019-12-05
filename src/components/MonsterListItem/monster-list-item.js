@@ -16,7 +16,7 @@ const MonsterListItem = (props) => {
                 <Col lg={{ span: 20 }} xl={{ span: 17 }} css={styles.JobInfoCol}>
                     <div css={styles.JobInfoContainer}>
                         <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>
-                            <a href={props.url} target="_blank" css={styles.TitleLink}>{props.title}</a>
+                            <a href={props.url} rel="noopener noreferrer" target="_blank" css={styles.TitleLink}>{props.title}</a>
                         </h4>
                         <div style={{ display: "flex", flexDirection: "row", marginTop: "-10%", marginBottom: "0%" }}>
                             <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue", fontSize: "21px" }}>{props.company}</h4>
@@ -29,7 +29,7 @@ const MonsterListItem = (props) => {
                 </Col>
                 <Col xl={{ span: 4 }} style={{ height: "100%" }}>
                     <div css={styles.ApplySection}>
-                        <a href={props.url} target="_blank" css={styles.ApplyButton}>Apply Now</a>
+                        <a href={props.url} rel="noopener noreferrer" target="_blank" css={styles.ApplyButton}>Apply Now</a>
                     </div>
                 </Col>
             </Row>

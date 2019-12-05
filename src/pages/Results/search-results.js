@@ -27,7 +27,7 @@ const SearchResults = (props) => {
     // let [typingTimer, setTypingTimer] = useState(null)
     const chanceSeed = new Chance(124)
     const [showSource, setShowSource] = useState({
-        showIndeed: true,
+        showIndeed: false,
         showMonster: false,
         showWowJobs: false,
         showJobBank: false

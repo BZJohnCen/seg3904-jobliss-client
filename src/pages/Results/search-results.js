@@ -64,16 +64,19 @@ const SearchResults = (props) => {
         }
     }
 
-    const renderIndeedListCard = (indeedList) => {
+    const renderIndeedListCards = (indeedList) => {
         return indeedList.map((job, i) => {
             return (<IndeedListItem key={i} {...job} />)
         })
     }
-    const renderMonsterListCard = (indeedList) => {
-        return indeedList.map((job, i) => {
-            return (<IndeedListItem key={i} {...job} />)
-        })
-    }
+    // const renderMonsterListCard = (indeedList) => {
+    //     return indeedList.map((job, i) => {
+    //         return (<IndeedListItem key={i} {...job} />)
+    //     })
+    // }
+    // const mergeResults = (i, m, jb, wj) => {
+    //     return i.concat(m, jb, wj)
+    // }
 
     useEffect(() => {
         const fetchIndeedJobs = async (query, location) => {
@@ -84,19 +87,21 @@ const SearchResults = (props) => {
             setMonsterResults(await getMonsterJobs(query, location))
         }
         const fetchJBJobs = async (query) => {
-            setMonsterResults(await getJBJobs(query))
+            setJobBanksResults(await getJBJobs(query))
         }
         const fetchWJJobs = async (query, location) => {
-            setMonsterResults(await getWJJobs(query, location))
+            setWowJobsResults(await getWJJobs(query, location))
         }
 
         fetchIndeedJobs(query, location)
         fetchMonsterJobs(query, location)
         fetchJBJobs(`${query} in ${location}`)
         fetchWJJobs(query, location)
-        console.log('merged results:\n', allResults.concat(indeedResults, monsterResults, wowJobsResults, jobBanksResults))
-        let list1 = renderIndeedListCard(indeedResults)
-        setAllResults(list1)
+        // console.log('render indeed list cards:', renderIndeedListCards(indeedResults))
+        // setTimeout(() => {
+        //     setAllResults(mergeResults(indeedResults, monsterResults, jobBanksResults, wowJobsResults))
+        //     console.log('allResults:\n', allResults)
+        // }, 5000)
 
         setIsLoading(false)
     }, [])
@@ -130,16 +135,27 @@ const SearchResults = (props) => {
                         stateCallback={stateCallback}
                     />
                     <div css={styles.ResultsContent}>
-                        {/* {allResults ?
+                        {indeedResults && monsterResults && wowJobsResults && jobBanksResults ?
                             <List
                                 split={false}
                                 size="large"
-                                dataSource={allResults}
+                                pagination={true}
+                                dataSource={[...indeedResults, ...monsterResults, ...wowJobsResults, ...jobBanksResults].map((job, i) => {
+                                    if (job.url.includes("indeed")){
+                                        return <IndeedListItem key={i} {...job} />
+                                    } else if (job.url.includes("monster")) {
+                                        return <MonsterListItem key={i} {...job} />
+                                    } else if (job.url.includes("jobbank")) {
+                                        return <JobBanksListItem key={i} {...job} />
+                                    } else {
+                                        return <WowJobsListItem key={i} {...job} />
+                                    }
+                                })}
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        } */}
-                        {indeedResults ?
+                        }
+                        {/* {indeedResults ?
                             <List
                                 split={false}
                                 size="large"
@@ -148,7 +164,7 @@ const SearchResults = (props) => {
                                 renderItem={item => <List.Item style={{ padding: "0 !important" }}>{item}</List.Item>}
                             /> :
                             <h2 style={{ color: "white" }}>No Jobs Postings Found.</h2>
-                        }
+                        } */}
                         {/* {monsterResults ?
                             <List
                                 split={false}

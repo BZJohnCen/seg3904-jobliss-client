@@ -41,6 +41,7 @@ export const SearchBar = css`
     width: 100%;
     align-items: center;
     justify-content: center;
+    margin-top: 3%;
 `
 export const SubmitSearch = css`
     font-size: 19px;
@@ -64,5 +65,5 @@ export const LabelSpan = css`
     color: lightblue;
     font-weight: 200;
     font-size: 18px;
-    top: 44.8%;
+    top: 45%;
 `

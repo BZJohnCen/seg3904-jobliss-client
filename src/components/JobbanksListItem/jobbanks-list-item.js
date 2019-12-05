@@ -16,16 +16,15 @@ const JobBanksListItem = (props) => {
                 <Col lg={{ span: 20 }} xl={{ span: 17 }} css={styles.JobInfoCol}>
                     <div css={styles.JobInfoContainer}>
                         <h4 css={styles.CardText} style={{ fontSize: "25px", fontWeight: "600" }}>
-                            <a href={props.url} rel="noopener noreferrer" target="_blank" css={styles.TitleLink}>{props.title}</a>
+                            <a href={props.url} rel="noopener noreferrer" target="_blank" css={styles.TitleLink}>{props.job_title}</a>
                         </h4>                        
                         <div style={{ display: "flex", flexDirection: "row" }}>
-                            <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue" }}>{props.company}</h4>
+                            <h4 css={styles.CardText} style={{ fontWeight: "400", color: "darkblue" }}>{props.job_company}</h4>
                             <h4 css={styles.LocationText}>{props.location}</h4>
                         </div>
-                        <div css={styles.SummaryContainer}>{props.summary}</div>
                         <div css={styles.MetaDataContainer}>
                             <h4 css={styles.CardText} style={{ width: "100%" }}>Salary: {(props.salary) ? props.salary: "N/A"}</h4>
-                            <h4 css={styles.DateReviewText}>Posted: {(props.postDate) ? props.postDate : "N/A"}</h4>
+                            <h4 css={styles.DateReviewText}>Posted: {(props.date_posted) ? props.date_posted : "N/A"}</h4>
                         </div>
                     </div>
                 </Col>

@@ -42,8 +42,8 @@ const Home = () => {
     return (
         <div css={styles.HomeContainer}>
             <div style={{ marginTop: "-20%", width: "100%" }}>
-                <div style={{ display: "flex", width: "fit-content", position: "absolute", left: "45%", top: "15%" }}><img src={BinocularsIcon} style={{ width: "100px", height: "100px" }} /></div>
-                <h1 css={styles.Title}>Jobliss. <span style={{ fontSize: "28px", color: "lightgreen" }}>find yours today</span></h1>
+                <div style={{ display: "flex", width: "fit-content", position: "absolute", left: "45%", top: "14.5%" }}><img src={BinocularsIcon} style={{ width: "100px", height: "100px" }} /></div>
+                <h1 css={styles.Title}>Jobliss. <span style={{ fontSize: "28px", color: "lightgreen" }}>start your search</span></h1>
                 <div css={styles.SearchBar}>
                     <input css={styles.QueryInput}                 
                         onChange={e => setUserQuery(e.target.value)} 

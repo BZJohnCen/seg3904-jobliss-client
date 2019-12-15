@@ -25,12 +25,12 @@ export const ContentContainer = css`
     align-items: center;
 `
 export const QueryInput = css`
-    width: 39%;
+    width: 100%;
     height: 42px;
     font-size: 18px;
     font-weight: 350;
     padding: 0.2em 1em 0.2em 1em;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
     margin-right: 1.5%;
     color: black;
@@ -61,9 +61,24 @@ export const SubmitSearch = css`
     }
 `
 export const LabelSpan = css`
-    position: absolute;
     color: lightblue;
+    position: absolute;
     font-weight: 200;
-    font-size: 18px;
-    top: 45.5%;
+    font-size: 16px;
+    top: 100%;
+    left: 1%;
+`
+
+export const queryContainer = css`
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-right: 2%;
+    width: 400px;
+`
+
+export const locationContainer = css`
+    display: flex;
+    position: relative;
+    flex-direction: column;
 `

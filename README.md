@@ -3,9 +3,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
-*Below is the only command you need to run in the terminal to have a local version of this app running.
 
-### `npm start`
+**Below is the only command you need to run in the terminal to have a local version of this app running.**
+### `npm i` or `yarn` first
+### Then `npm start` or `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

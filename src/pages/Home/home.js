@@ -45,21 +45,25 @@ const Home = () => {
                 <div style={{ display: "flex", width: "fit-content", position: "absolute", left: "45%", top: "14.5%" }}><img src={BinocularsIcon} style={{ width: "100px", height: "100px" }} /></div>
                 <h1 css={styles.Title}>Jobliss. <span style={{ fontSize: "28px", color: "lightgreen" }}>start your search</span></h1>
                 <div css={styles.SearchBar}>
-                    <input css={styles.QueryInput}                 
-                        onChange={e => setUserQuery(e.target.value)} 
-                        type="text" 
-                        placeholder="'Software Developer'"
-                        onKeyPress={handleEnterKey}
-                        required />
-                    <span css={styles.LabelSpan} style={{ left: "21.8%" }}>Keyword</span>
-                    <input css={styles.QueryInput} 
-                        onChange={e => setUserLocation(e.target.value)} 
-                        style={{ width: "15%", marginRight: "2em" }} 
-                        type="text" 
-                        placeholder="'Toronto, ON'"
-                        onKeyPress={handleEnterKey} 
-                        required />
-                    <span css={styles.LabelSpan} style={{ left: "55.1%" }}>Location</span>
+                    <div css={styles.queryContainer}>
+                        <input css={styles.QueryInput}                 
+                            onChange={e => setUserQuery(e.target.value)} 
+                            type="text" 
+                            placeholder="'Software Developer'"
+                            onKeyPress={handleEnterKey}
+                            required />
+                        <span css={styles.LabelSpan}>Keyword</span>
+                    </div>
+                    <div css={styles.locationContainer}>
+                        <input css={styles.QueryInput} 
+                            onChange={e => setUserLocation(e.target.value)} 
+                            style={{ width: "85%" }} 
+                            type="text" 
+                            placeholder="'Toronto, ON'"
+                            onKeyPress={handleEnterKey} 
+                            required />
+                        <span css={styles.LabelSpan}>Location</span>
+                    </div>
                     <button css={styles.SubmitSearch} onClick={handleOnSubmit} type="submit">Search</button>
                 </div>
             </div>

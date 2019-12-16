@@ -70,7 +70,7 @@ export const ContentContainer = css`
 export const JobInfoContainer = css`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 155px;
     width: 100%; 
     // background-color: purple; //remove after
     // justify-content: center;
